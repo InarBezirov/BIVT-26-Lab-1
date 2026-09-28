@@ -6,7 +6,7 @@ namespace Lab1
         {
             bool answer = false;
 
-            answer = Math.Abs(d) > 1;
+            answer = Math.Abs(d) >= 1;
 
             return answer;
         }
@@ -14,8 +14,14 @@ namespace Lab1
         {
             bool answer = false;
 
-            answer = (d + f) / 2 > 0;
-
+            if((d + f) / 2 > 0)
+            {
+                answer = true;
+            }
+            else
+            {
+                answer = false;
+            }
             return answer;
         }
         public bool Task3(int a, int b)
@@ -84,12 +90,16 @@ namespace Lab1
         }
         public bool Task8(int X, int Y)
         {
-            bool answer = false;
-
+            bool answer = false;   
             int tea = (X + 1) / 2;
-            int shift = (60 * X) + (Y * tea);
-            if (shift >= 420 && shift - Y * tea <= 3) answer = true;
+            int shift = 60 * X + Y * tea;
 
+            int newBedtime = 240 - shift;
+            newBedtime = ((newBedtime % 1440) + 1440) % 1440;
+            if (newBedtime >= 1320 || newBedtime == 0)
+            {
+                answer = true;
+            }
             return answer;
         }
     }
