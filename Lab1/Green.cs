@@ -91,15 +91,8 @@ namespace Lab1
         public bool Task8(int X, int Y)
         {
             bool answer = false;   
-            int tea = (X + 1) / 2;
-            int shift = 60 * X + Y * tea;
-
-            int newBedtime = 240 - shift;
-            newBedtime = ((newBedtime % 1440) + 1440) % 1440;
-            if (newBedtime >= 1320 || newBedtime == 0)
-            {
-                answer = true;
-            }
+            int sleep = 180 + ((X + 1) / 2) * Y;
+            answer = (X >= 7) && (sleep <= 540) && (sleep >= 420);
             return answer;
         }
     }
